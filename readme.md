@@ -235,3 +235,17 @@ This kind of behavior is unacceptable in production systems.
 Ownership checks are essential for ensuring the **security, integrity, and privacy** of your application. If you're serious about protecting user data and preventing unauthorized actions, you should implement these checks for all sensitive or user-specific resources.
 
 Would you like help implementing a more streamlined ownership-checking mechanism?
+
+
+# {
+    "email": "testuser@example.com",
+    "password": "securepassword"
+}
+
+
+{
+    "name": "london",
+    "start_date": "2024-12-15",
+    "end_date": "2024-12-20",
+    "budget": 500
+}
