@@ -90,23 +90,122 @@ mytravelmap-backend/
 #### **Frontend (React)**
 ```
 mytravelmap-frontend/
-├── src/
-│   ├── components/
-│   │   ├── TripList.jsx       # List of trips
-│   │   ├── MapView.jsx        # Map component
-│   │   └── Analytics.jsx      # Dashboard stats
-│   ├── redux/
-│   │   ├── slices/
-│   │   │   ├── authSlice.js   # Authentication state
-│   │   │   └── tripSlice.js   # Trip data state
-│   │   └── store.js           # Redux store
-│   ├── pages/
-│   │   ├── Login.jsx          # Login page
-│   │   ├── Signup.jsx         # Signup page
-│   │   └── Home.jsx           # Dashboard/homepage
-│   └── App.jsx                # Root component
-├── public/                    # Static files
-└── package.json
+Here’s a suggested folder and component structure for your React frontend project based on your backend requirements and the provided details:
+
+---
+
+### **Folder Structure**
+```
+src/
+├── components/
+│   ├── Auth/
+│   │   ├── LoginForm.jsx
+│   │   ├── SignupForm.jsx
+│   ├── Trips/
+│   │   ├── TripList.jsx
+│   │   ├── TripForm.jsx
+│   ├── Expenses/
+│   │   ├── ExpenseTracker.jsx
+│   │   ├── ExpenseForm.jsx
+│   ├── MapView/
+│   │   ├── MapView.jsx
+│   ├── Layout/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Sidebar.jsx
+├── features/
+│   ├── auth/
+│   │   ├── authSlice.js
+│   ├── trips/
+│   │   ├── tripSlice.js
+│   ├── expenses/
+│   │   ├── expenseSlice.js
+├── pages/
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── Signup.jsx
+│   ├── TripDetails.jsx
+├── api/
+│   ├── axiosInstance.js
+│   ├── authApi.js
+│   ├── tripApi.js
+│   ├── expenseApi.js
+├── App.jsx
+├── index.jsx
+├── router/
+│   ├── AppRouter.jsx
+├── styles/
+│   ├── global.css
+├── utils/
+│   ├── validation.js
+│   ├── formatters.js
+```
+
+---
+
+### **Component Details**
+1. **Authentication (Login & Signup)**:
+   - **Components**: `LoginForm.jsx`, `SignupForm.jsx`
+   - **Redux State**: `authSlice.js` to handle user state, JWT tokens, and authentication status.
+   - **API**: `authApi.js` to handle API requests (`/auth/login`, `/auth/signup`).
+
+2. **Trip Management**:
+   - **Components**: 
+     - `TripList.jsx` to display the list of trips.
+     - `TripForm.jsx` to create or edit trips.
+   - **Redux State**: `tripSlice.js` to manage trips.
+   - **API**: `tripApi.js` for backend integration.
+
+3. **Expense Tracking**:
+   - **Components**:
+     - `ExpenseTracker.jsx` to display and manage expenses.
+     - `ExpenseForm.jsx` to add/edit expenses.
+   - **Redux State**: `expenseSlice.js` to handle expenses.
+   - **API**: `expenseApi.js` for managing expenses in the backend.
+
+4. **Map Integration**:
+   - **Component**: `MapView.jsx` to display interactive maps using Leaflet.js.
+   - **Integration**: Fetch destination coordinates from backend and render them.
+
+5. **Layout**:
+   - **Components**: `Header.jsx`, `Footer.jsx`, and `Sidebar.jsx` for navigation and consistent UI.
+
+6. **Routing**:
+   - **File**: `AppRouter.jsx` using React Router for navigation between pages (e.g., Home, Login, Signup, Trip Details).
+
+7. **Global State Management**:
+   - **Redux Toolkit**:
+     - `authSlice.js` for authentication state.
+     - `tripSlice.js` for trip-related data.
+     - `expenseSlice.js` for expense data.
+
+8. **Styling**:
+   - **File**: `global.css` for shared styles and custom CSS for components.
+
+9. **Utility Functions**:
+   - `validation.js` for form validation logic.
+   - `formatters.js` for data formatting (e.g., dates, currencies).
+
+---
+
+### **Key Integration Points**
+1. **Axios**:
+   - Centralized Axios instance (`axiosInstance.js`) for API requests, including JWT token handling.
+
+2. **Redux Toolkit**:
+   - Dispatch actions (e.g., `login`, `fetchTrips`) to manage state across the application.
+
+3. **Backend Integration**:
+   - Use the backend APIs for:
+     - Authentication (`authApi.js`)
+     - CRUD operations on trips and expenses (`tripApi.js`, `expenseApi.js`).
+
+4. **Leaflet.js**:
+   - Fetch destination data from backend and render markers on the map.
+
+---
+
+This structure ensures clean separation of concerns, scalability, and seamless integration with your backend.
 ```
 
 ---
@@ -248,4 +347,12 @@ Would you like help implementing a more streamlined ownership-checking mechanism
     "start_date": "2024-12-15",
     "end_date": "2024-12-20",
     "budget": 500
+}
+
+
+{
+    "trip_id": 1,
+    "name": "kow",
+    "location": "Addanki",
+    "description": "My destination description"
 }
